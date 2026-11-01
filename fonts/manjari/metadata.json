@@ -1,0 +1,33 @@
+{
+  "slug": "manjari",
+  "name": "Manjari",
+  "nameMl": "മഞ്ജരി",
+  "family": "Manjari",
+  "author": {
+    "name": "Santhosh Thottingal",
+    "url": "https://thottingal.in"
+  },
+  "description": "A Malayalam and Latin sans-serif typeface. This collection includes the original Regular style with its licence and attribution.",
+  "version": "Version 2.000",
+  "languages": [
+    "ml",
+    "en"
+  ],
+  "category": "sans",
+  "origin": "reference",
+  "source": "https://github.com/smc/manjari",
+  "revision": "6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec",
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "noticeFile": "NOTICE.txt",
+  "preview": "Manjari-Regular.ttf",
+  "files": [
+    {
+      "file": "Manjari-Regular.ttf",
+      "style": "Regular",
+      "weight": 400,
+      "sha256": "16460924696bfea2a2f71b4201d8786867c6413b548ecbd22bc6bfe55be90f95",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/manjari/Manjari-Regular.ttf"
+    }
+  ]
+}

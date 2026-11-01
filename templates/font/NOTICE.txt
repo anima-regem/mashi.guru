@@ -1,0 +1,15 @@
+Replace this template. Preserve the original copyright and all required notices.
+
+Font name:
+Designer:
+Copyright holder and year:
+Original project URL:
+Licence identifier and supplied licence filename:
+Reserved Font Names, if any (copy exactly from upstream):
+Pinned source repository and full revision:
+Original font download URL for each file:
+SHA-256 for each font file:
+Other required upstream notices:
+Known modifications (if any, with licence-compliant naming and attribution):
+
+Do not use this file as a substitute for the full licence text.

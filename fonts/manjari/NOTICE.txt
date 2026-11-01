@@ -1,0 +1,16 @@
+Manjari — curated reference, not a Mashi community submission.
+
+Designer: Santhosh Thottingal
+Project: https://github.com/smc/manjari
+Licence: SIL Open Font License 1.1. The complete, unchanged upstream OFL.txt is included.
+
+The original font binary is redistributed without modification or renaming.
+Font source: https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/manjari/Manjari-Regular.ttf
+Licence source: https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/manjari/OFL.txt
+Pinned source repository: https://github.com/google/fonts
+Pinned revision: 6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec
+SHA-256: 16460924696bfea2a2f71b4201d8786867c6413b548ecbd22bc6bfe55be90f95
+
+Mashi is an independent catalog. This listing does not imply endorsement by the designer,
+Swathanthra Malayalam Computing, or Google. Original copyright and licence notices remain
+in the supplied OFL.txt and in the font binary. No reserved font names have been changed.

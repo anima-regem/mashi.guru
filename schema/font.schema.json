@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mashi font submission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "name", "nameMl", "family", "author", "description", "version", "languages", "category", "origin", "source", "revision", "license", "licenseFile", "noticeFile", "preview", "files"],
+  "properties": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "name": {"$ref": "#/$defs/short"},
+    "nameMl": {"$ref": "#/$defs/short"},
+    "family": {"$ref": "#/$defs/short"},
+    "author": {
+      "type": "object", "additionalProperties": false, "required": ["name"],
+      "properties": {"name": {"$ref": "#/$defs/short"}, "url": {"$ref": "#/$defs/url"}}
+    },
+    "description": {"type": "string", "minLength": 10, "maxLength": 280},
+    "version": {"$ref": "#/$defs/short"},
+    "languages": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "contains": {"const": "ml"}, "items": {"type": "string", "pattern": "^[a-z]{2,3}$"}},
+    "category": {"enum": ["handwriting", "sans", "serif", "display", "monospace"]},
+    "origin": {"enum": ["community", "reference"]},
+    "source": {"$ref": "#/$defs/url"},
+    "revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "license": {"enum": ["OFL-1.1", "Apache-2.0", "CC0-1.0"]},
+    "licenseFile": {"$ref": "#/$defs/textFile"},
+    "noticeFile": {"$ref": "#/$defs/textFile"},
+    "preview": {"$ref": "#/$defs/fontFile"},
+    "files": {
+      "type": "array", "minItems": 1, "maxItems": 6,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["file", "style", "weight", "sha256", "sourceUrl"],
+        "properties": {
+          "file": {"$ref": "#/$defs/fontFile"},
+          "style": {"$ref": "#/$defs/short"},
+          "weight": {"type": "integer", "minimum": 100, "maximum": 900},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "sourceUrl": {"$ref": "#/$defs/url"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "short": {"type": "string", "minLength": 1, "maxLength": 100},
+    "url": {"type": "string", "minLength": 10, "maxLength": 500, "pattern": "^https://"},
+    "fontFile": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,99}\\.(ttf|otf)$"},
+    "textFile": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,99}\\.txt$"}
+  }
+}

@@ -1,0 +1,16 @@
+Chilanka — curated reference, not a Mashi community submission.
+
+Designer: Santhosh Thottingal
+Project: https://github.com/smc/Chilanka
+Licence: SIL Open Font License 1.1. The complete, unchanged upstream OFL.txt is included.
+
+The original font binary is redistributed without modification or renaming.
+Font source: https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/chilanka/Chilanka-Regular.ttf
+Licence source: https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/chilanka/OFL.txt
+Pinned source repository: https://github.com/google/fonts
+Pinned revision: 6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec
+SHA-256: c6ce47d1a8d387310469c8e355351ff2bd4106030c2a45f1cef0c93215075ed7
+
+Mashi is an independent catalog. This listing does not imply endorsement by the designer,
+Swathanthra Malayalam Computing, or Google. Original copyright and licence notices remain
+in the supplied OFL.txt and in the font binary. No reserved font names have been changed.

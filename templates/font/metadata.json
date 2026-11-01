@@ -1,0 +1,27 @@
+{
+  "slug": "your-font-slug",
+  "name": "Your Font",
+  "nameMl": "മലയാളം പേര്",
+  "family": "Your Font",
+  "author": {"name": "Designer name", "url": "https://example.com/designer"},
+  "description": "Describe the font, its intended use, and any known Malayalam shaping or glyph limitations.",
+  "version": "Version 1.000",
+  "languages": ["ml"],
+  "category": "handwriting",
+  "origin": "community",
+  "source": "https://github.com/YOUR-USERNAME/YOUR-FONT",
+  "revision": "REPLACE_WITH_FULL_40_CHARACTER_COMMIT_SHA",
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "noticeFile": "NOTICE.txt",
+  "preview": "YourFont-Regular.ttf",
+  "files": [
+    {
+      "file": "YourFont-Regular.ttf",
+      "style": "Regular",
+      "weight": 400,
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256_OF_FONT",
+      "sourceUrl": "https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-FONT/FULL-COMMIT-SHA/YourFont-Regular.ttf"
+    }
+  ]
+}
