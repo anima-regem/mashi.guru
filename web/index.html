@@ -16,21 +16,17 @@
   <a class="skip-link" href="#collection">Skip to fonts</a>
   <header class="site-header wrap">
     <a class="brand" href="./" aria-label="Mashi home"><span class="brand-mark" lang="ml">മഷി</span><span class="brand-caption">Mashi</span></a>
-    <nav aria-label="Main navigation"><a class="nav-current" href="#collection">Explore fonts</a><a href="https://github.com/anima-regem/Mashi">The editor <span aria-hidden="true">↗</span></a><a class="nav-contribute" href="https://github.com/anima-regem/mashi.guru/blob/main/CONTRIBUTING.md">Publish a font <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="Main navigation"><a class="nav-editor" href="https://github.com/anima-regem/Mashi">The editor <span aria-hidden="true">↗</span></a><a class="nav-contribute" href="https://github.com/anima-regem/mashi.guru/blob/main/CONTRIBUTING.md">Publish a font <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main>
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy"><h1 id="hero-title">Malayalam fonts.</h1><p class="hero-description">Try a font, then download it with its licence.</p></div>
-      <!-- HERO_SPECIMEN -->
-    </section>
     <section id="collection" class="collection wrap" aria-labelledby="collection-title">
-      <div class="collection-heading"><h2 id="collection-title">The collection <span class="count" id="font-count">{{FONT_COUNT}}</span></h2><p>{{COLLECTION_STATUS}}</p></div>
+      <div class="collection-heading"><h1 id="collection-title">Malayalam fonts <span class="count" id="font-count">{{FONT_COUNT}}</span></h1><p>{{COLLECTION_STATUS}}</p></div>
       <div class="preview-tools" id="preview-tools" hidden>
         <div class="preview-input"><label for="preview-text">Preview text</label><input id="preview-text" type="text" maxlength="200" placeholder="മഴ നനഞ്ഞ മണ്ണിന്റെ മണം." lang="ml" autocomplete="off" spellcheck="false"><button id="reset-preview" class="reset" type="button">Reset</button></div>
         <div class="size-input"><label for="preview-size">Size <output id="size-value" for="preview-size">48 px</output></label><input id="preview-size" type="range" min="24" max="80" value="48" step="1"></div>
       </div>
       <div class="collection-filters" id="collection-filters" hidden>
-        <div class="filter-tabs" role="group" aria-label="Font collection"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All fonts</button><button type="button" class="filter" data-filter="community" aria-pressed="false">Community</button><button type="button" class="filter" data-filter="reference" aria-pressed="false">References</button></div>
+        <!-- ORIGIN_FILTERS -->
         <div class="search-input"><label class="sr-only" for="font-search">Search fonts by name, author or category</label><span aria-hidden="true">⌕</span><input id="font-search" type="search" placeholder="Find a font or designer" maxlength="100" autocomplete="off"></div>
       </div>
       <p id="font-load-error" class="font-error" role="status" hidden>A font preview could not load. You can still download its files and licence.</p>
@@ -39,8 +35,7 @@
       <p class="sr-only" id="results-status" role="status" aria-live="polite" aria-atomic="true"></p>
       <noscript><p class="noscript">Enable JavaScript for custom previews and search. Font samples, licences and downloads work without it.</p></noscript>
     </section>
-    <section class="contribute wrap" aria-labelledby="contribute-title"><div><h2 id="contribute-title">Publish a font.</h2><p>Add your font files, licence, and metadata to a fork of this repository.<br>Open a pull request. After review and merge, your font appears here.</p></div><a class="button" href="https://github.com/anima-regem/mashi.guru/blob/main/templates/font/metadata.json">Get the submission template <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="site-footer wrap"><div><a class="footer-brand" href="./">Mashi <span lang="ml">/ മഷി</span></a></div><div class="footer-links"><a href="https://github.com/anima-regem/mashi.guru">Website source</a><a href="https://github.com/anima-regem/Mashi">Mashi editor</a><a href="https://github.com/anima-regem/Mashi-ML">Mashi ML</a></div><p class="footer-note">Each font keeps its own licence.<br>Curated references are independent projects, not Mashi submissions.</p></footer>
+  <footer class="site-footer wrap"><div><a class="footer-brand" href="./">Mashi <span lang="ml">/ മഷി</span></a></div><div class="footer-links"><a href="https://github.com/anima-regem/mashi.guru">Website source</a><a href="https://github.com/anima-regem/Mashi">Mashi editor</a><a href="https://github.com/anima-regem/Mashi-ML">Mashi ML</a></div><p class="footer-note">Fonts carry their own licences.</p></footer>
 </body>
 </html>

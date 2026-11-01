@@ -23,9 +23,8 @@
     });
     document.querySelector("#font-count").textContent = String(visible);
     document.querySelector("#no-results").hidden = visible > 0;
-    const communityEmpty = active === "community" && !cards.some(card => card.dataset.origin === "community");
-    document.querySelector("#empty-title").textContent = communityEmpty ? "No community fonts yet." : "No fonts found.";
-    document.querySelector("#empty-description").textContent = communityEmpty ? "No community fonts have been published yet. Start with the submission guide below." : "Try another name, designer or category.";
+    document.querySelector("#empty-title").textContent = "No fonts found.";
+    document.querySelector("#empty-description").textContent = "Try another name, designer or category.";
     status.textContent = `${visible} font ${visible === 1 ? "family" : "families"} shown.`;
     tabs.forEach(tab => {
       const selected = tab.dataset.filter === active;

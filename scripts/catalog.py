@@ -192,11 +192,11 @@ def card(font):
     styles = "1 style" if len(font["files"]) == 1 else f"{len(font['files'])} styles"
     style_options = "".join(f'<option value="{e(a["file"])}" {"selected" if a["file"] == font["preview"] else ""}>{e(a["style"])}</option>' for a in font["files"])
     return f'''<article class="font-card" id="{slug}" data-font="{slug}" data-origin="{font['origin']}" data-category="{font['category']}" data-search="{e(' '.join([font['name'], font['nameMl'], font['author']['name'], font['category']]).casefold())}">
-      <div class="card-heading"><div><h3>{e(font['name'])} <span lang="ml">{e(font['nameMl'])}</span></h3><p>By {e(font['author']['name'])}</p></div><span class="category">{e(font['category'].capitalize())}</span></div>
+      <div class="card-heading"><div><h2>{e(font['name'])} <span lang="ml">{e(font['nameMl'])}</span></h2><p>By {e(font['author']['name'])}</p></div><span class="category">{e(font['category'].capitalize())}</span></div>
       <p class="font-preview" lang="ml" data-preview style="font-family: 'font-{slug}', sans-serif">{SAMPLE}</p>
       <div class="card-bottom"><span>{origin} <span aria-hidden="true">/</span> {styles}</span><a class="download" href="downloads/{slug}.zip" download>Download <span aria-hidden="true">↙</span><span class="sr-only"> {e(font['name'])}, font and licence ZIP</span></a></div>
       <details><summary>About &amp; licence</summary><div class="font-info"><p>{e(font['description'])}</p>
-      <dl><div><dt>Licence</dt><dd><a href="fonts/{slug}/{e(font['licenseFile'])}">{e(font['license'])}</a></dd></div><div><dt>Version</dt><dd>{e(font['version'])}</dd></div><div><dt>Includes</dt><dd>Font files, complete licence &amp; attribution</dd></div></dl>
+      <dl><div><dt>Licence</dt><dd><a href="fonts/{slug}/{e(font['licenseFile'])}">{e(font['license'])}</a></dd></div><div><dt>Includes</dt><dd>Font files, complete licence &amp; attribution</dd></div></dl>
       <p><a href="{e(font['source'])}" rel="noopener noreferrer">Original project <span aria-hidden="true">↗</span></a> <a href="fonts/{slug}/{e(font['noticeFile'])}">Attribution &amp; provenance</a></p>
       <label class="style-label" hidden>Preview style <select data-style>{style_options}</select></label></div></details>
     </article>'''
@@ -228,13 +228,11 @@ def build(out=ROOT / "dist", fonts=ROOT / "fonts"):
     (out / "fonts.css").write_text("\n".join(rules) + "\n", encoding="utf-8")
     (out / "catalog.json").write_text(json.dumps(public, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     template = (ROOT / "web/index.html").read_text(encoding="utf-8")
-    specimen = ""
-    if catalog:
-        font = catalog[0]
-        style = next(a["style"] for a in font["files"] if a["file"] == font["preview"])
-        e = lambda value: html.escape(str(value), quote=True)
-        specimen = f'''<div class="hero-specimen" aria-label="Malayalam lettering specimen"><span class="specimen-main" lang="ml" style="font-family:'font-{font['slug']}',sans-serif">മലയാളം</span><span class="specimen-caption"><a href="#{font['slug']}">{e(font['name'])} · {e(style)}</a><span>{e(font['author']['name'])}</span></span></div>'''
-    template = template.replace("<!-- HERO_SPECIMEN -->", specimen)
+    # Origin filters only help when the collection contains both origins.
+    origin_filters = ""
+    if len({font["origin"] for font in catalog}) > 1:
+        origin_filters = '<div class="filter-tabs" role="group" aria-label="Font collection"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All fonts</button><button type="button" class="filter" data-filter="community" aria-pressed="false">Community</button><button type="button" class="filter" data-filter="reference" aria-pressed="false">References</button></div>'
+    template = template.replace("<!-- ORIGIN_FILTERS -->", origin_filters)
     # Content-addressed assets prevent stale stylesheet/preview behavior after deployments.
     for name in ("style.css", "app.js", "fonts.css"):
         path = out / name
@@ -246,8 +244,8 @@ def build(out=ROOT / "dist", fonts=ROOT / "fonts"):
     cards = "\n".join(card(f) for f in catalog)
     if not catalog:
         cards = '<p class="empty-catalog">The collection is waiting for its first font. <a href="https://github.com/anima-regem/mashi.guru/blob/main/CONTRIBUTING.md">Publish yours.</a></p>'
-    status = ("No community fonts have been published here yet. These independently created, openly licensed reference fonts are here to try."
-              if not community_count else "Explore community submissions and clearly labelled curated references. Every download includes its licence.")
+    status = ("No community fonts yet. Try these independent reference fonts."
+              if not community_count else "Preview and download fonts with their licences.")
     if not catalog:
         status = "No fonts have been published yet. Use the submission guide to contribute the first one."
     template = template.replace("<!-- FONT_CARDS -->", cards).replace("{{FONT_COUNT}}", str(len(catalog))).replace("{{COLLECTION_STATUS}}", status)
