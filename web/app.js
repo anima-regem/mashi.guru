@@ -11,6 +11,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const animations = new Map();
   let active = "all";
+  let typing = null;
 
   function animate(element, frames, duration = 260) {
     animations.get(element)?.cancel();
@@ -29,7 +30,9 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) stopAnimations(); });
 
   function preview() {
-    cards.forEach(card => { card.querySelector("[data-preview]").textContent = text.value.trim() || sample; });
+    if (typing?.isComposing()) return;
+    const value = typing ? typing.value() : text.value;
+    cards.forEach(card => { card.querySelector("[data-preview]").textContent = value.trim() || sample; });
   }
   function filter() {
     // Capture only visible positions. No delay, stagger or entrance gate on results.
@@ -64,7 +67,28 @@
 
   document.querySelector("#preview-tools").hidden = false;
   document.querySelector("#collection-filters").hidden = false;
-  text.addEventListener("input", preview);
+  const manglishControls = document.querySelector("#manglish-controls");
+  if (manglishControls) {
+    manglishControls.hidden = false;
+    try {
+      typing = globalThis.MashiManglishInput.attach({
+        input: text,
+        toggle: document.querySelector("#manglish-mode"),
+        panel: document.querySelector("#manglish-panel"),
+        alternativeRow: document.querySelector("#manglish-alternatives"),
+        alternativeLabel: document.querySelector("#manglish-alternative-label"),
+        alternativeSelect: document.querySelector("#manglish-alternative"),
+        engine: globalThis.MashiManglish,
+        rules: globalThis.MashiManglishRules,
+        onChange: preview,
+        onError: () => { document.querySelector("#manglish-error").hidden = false; }
+      });
+    } catch {
+      document.querySelector("#manglish-mode").disabled = true;
+      document.querySelector("#manglish-error").hidden = false;
+    }
+  }
+  if (!typing) text.addEventListener("input", preview);
   text.addEventListener("focus", () => document.body.classList.add("is-previewing"));
   text.addEventListener("blur", () => document.body.classList.remove("is-previewing"));
   search.addEventListener("input", filter);
@@ -74,6 +98,7 @@
   });
   document.querySelector("#reset-preview").addEventListener("click", () => {
     text.value = "";
+    typing?.reset();
     size.value = size.defaultValue;
     size.dispatchEvent(new Event("input"));
     preview();

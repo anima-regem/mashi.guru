@@ -1,0 +1,14 @@
+{
+  "project": "Swanalekha",
+  "repository": "https://github.com/smc/swanalekha",
+  "revision": "7463b55a0def8be146e58541840f1e9ad25b0b12",
+  "package_version": "1.0.0",
+  "license": "MIT",
+  "author": "Santhosh Thottingal",
+  "files": {
+    "rules.json": {"upstream_path": "js/src/rules.json", "sha256": "231d7c46ebfdf214330132e373ed842d9708078d59677a91318efec03d673615"},
+    "LICENSE": {"upstream_path": "LICENSE", "sha256": "d8e6924435b091cc0d49bdc1bea5604a48d0150f067338a2192662de2ece837c"},
+    "JS-LICENSE": {"upstream_path": "js/LICENSE", "sha256": "3a1e2e86991b6cf8af33ae2a696ca0ce77fb8ec8c24babf9c74e01fe8802ff5c"}
+  },
+  "scope": "Unmodified rule data and original MIT notices only. Upstream DOM adapter and development dependencies are not bundled."
+}

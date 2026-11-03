@@ -202,6 +202,33 @@ def card(font):
     </article>'''
 
 
+def browser_bundle(out):
+    """Bundle audited data and our own adapter without npm, fetch or remote code."""
+    vendor = ROOT / "vendor/swanalekha"
+    provenance = read_json(vendor / "provenance.json")
+    if set(provenance["files"]) != {"rules.json", "LICENSE", "JS-LICENSE"}:
+        fail("Incomplete Swanalekha provenance")
+    for name, info in provenance["files"].items():
+        path = vendor / name
+        if name not in ("rules.json", "LICENSE", "JS-LICENSE") or path.is_symlink():
+            fail("Unexpected Swanalekha vendor file")
+        if hashlib.sha256(path.read_bytes()).hexdigest() != info["sha256"]:
+            fail(f"Pinned Swanalekha asset changed: {name}")
+    rules = read_json(vendor / "rules.json")
+    if len(rules) != 2162 or not all(isinstance(k, str) and isinstance(v, str) and len(k) <= 8 and len(v) <= 32 for k, v in rules.items()):
+        fail("Unexpected phonetic rule table")
+    notices = (vendor / "LICENSE").read_text() + "\n\n" + (vendor / "JS-LICENSE").read_text()
+    banner = "/* Swanalekha rule data, pinned at " + provenance["revision"] + "\n" + notices.replace("*/", "* /") + "\n*/\n"
+    data = ";globalThis.MashiManglishRules=Object.freeze(" + json.dumps(rules, ensure_ascii=False, separators=(",", ":")) + ");\n"
+    scripts = "\n".join((ROOT / "web" / name).read_text() for name in ("manglish.js", "manglish-input.js", "app.js"))
+    (out / "app.js").write_text(banner + data + scripts, encoding="utf-8")
+    notice_dir = out / "notices/swanalekha"
+    notice_dir.mkdir(parents=True)
+    for name in ("LICENSE", "JS-LICENSE"):
+        shutil.copyfile(vendor / name, notice_dir / (name + ".txt"))
+    shutil.copyfile(vendor / "provenance.json", notice_dir / "provenance.json")
+
+
 def build(out=ROOT / "dist", fonts=ROOT / "fonts"):
     out = Path(out).resolve()
     # Keep output destruction confined to the documented generated directory.
@@ -211,8 +238,9 @@ def build(out=ROOT / "dist", fonts=ROOT / "fonts"):
     if out.exists():
         shutil.rmtree(out)
     out.mkdir()
-    for name in ("style.css", "app.js", "favicon.svg"):
+    for name in ("style.css", "favicon.svg"):
         shutil.copyfile(ROOT / "web" / name, out / name)
+    browser_bundle(out)
     (out / "downloads").mkdir()
     (out / "fonts").mkdir()
     rules, public = [], []

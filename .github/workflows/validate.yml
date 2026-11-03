@@ -30,5 +30,7 @@ jobs:
         run: python -m pip install --require-hashes -r trusted/requirements.lock
       - name: Test trusted intake code
         run: python -m unittest discover -s trusted/tests -v
+      - name: Test trusted browser interactions
+        run: node --test trusted/tests/*.test.*
       - name: Validate and build submitted data with trusted code
         run: python trusted/scripts/catalog.py build --fonts submission/fonts
