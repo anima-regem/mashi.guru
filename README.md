@@ -4,6 +4,8 @@ A minimal Malayalam font gallery for **mashi.guru**, separate from the [Mashi ed
 
 Visitors can type a shared preview, change its size, search by font/designer/category, inspect licences, and download a ZIP containing original fonts, full licence, attribution, and metadata. All processing is local in the browser; there is no account, backend, analytics, tracker, or remote API dependency.
 
+An optional **Manglish** checkbox turns Roman phonetic input into Malayalam in the specimens while keeping the source field native. It uses pinned MIT-licensed Swanalekha rules, works without a typing API, and can be disabled at any time. See [typing behavior and the shared desktop module contract](docs/MANGLISH.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
 There are **no community-published Mashi fonts yet**. The initial collection contains two clearly labelled, independently created reference fonts: Chilanka Regular and Manjari Regular, by Santhosh Thottingal. Their original files and SIL Open Font License 1.1 notices are preserved. Listing them does not imply endorsement. See [FONT_SOURCES.md](FONT_SOURCES.md).
 
 ## Run locally
@@ -50,7 +52,7 @@ Original website code is [MIT licensed](LICENSE). Font licences remain separate 
 The gallery's interaction and reduced-motion regressions also run without a browser dependency:
 
 ```sh
-node --test tests/motion.test.mjs
+node --test tests/*.test.*
 ```
 
 See [DESIGN.md](DESIGN.md) for the requested design skill, element audit, motion decisions, and verification scope.
