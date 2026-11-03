@@ -272,7 +272,7 @@ def build(out=ROOT / "dist", fonts=ROOT / "fonts"):
     cards = "\n".join(card(f) for f in catalog)
     if not catalog:
         cards = '<p class="empty-catalog">The collection is waiting for its first font. <a href="https://github.com/anima-regem/mashi.guru/blob/main/CONTRIBUTING.md">Publish yours.</a></p>'
-    status = ("No community fonts yet. Try these independent reference fonts."
+    status = ("No community fonts yet."
               if not community_count else "Preview and download fonts with their licences.")
     if not catalog:
         status = "No fonts have been published yet. Use the submission guide to contribute the first one."

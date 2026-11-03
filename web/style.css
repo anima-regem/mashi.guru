@@ -31,7 +31,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .brand-mark { font: 45px/1.5 "font-chilanka", sans-serif; letter-spacing: -3px; }
 .brand-caption { font-size: 22px; font-weight: 600; letter-spacing: -.8px; }
 .site-header nav { display: flex; gap: 30px; align-items: center; font-size: 12px; }
-.nav-editor { color: var(--muted); }
 .nav-contribute { display: inline-flex; align-items: center; gap: 18px; min-height: 46px; padding: 10px 20px; border-radius: 999px; background: var(--ink); color: var(--page); }
 .nav-contribute:hover { text-decoration: none; }
 .collection { padding-top: 20px; padding-bottom: 74px; }
@@ -59,7 +58,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .preview-input input { width: 100%; padding: 0; border: 0; background: transparent; font: 24px/1.8 "font-manjari", sans-serif; }
 .preview-input input::placeholder { color: var(--muted); opacity: .9; }
 .preview-input input:focus-visible { outline-offset: 2px; }
-.reset { align-self: center; min-height: 44px; padding: 8px 11px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 11px; transition: background 180ms ease, color 180ms ease; }
+.reset { align-self: center; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 8px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); transition: background 180ms ease, color 180ms ease; }
 .reset:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); color: var(--ink); }
 .size-input { display: flex; flex-direction: column; justify-content: center; gap: 13px; border-left: 1px solid var(--line); padding: 18px 23px; }
 .size-input label { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
@@ -121,7 +120,6 @@ input[type="range"] { width: 100%; min-height: 24px; margin: 0; accent-color: va
 .footer-brand span { font: 17px/1.5 "font-manjari", sans-serif; margin-left: 5px; }
 .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
 .footer-links a { min-height: 44px; display: inline-flex; align-items: center; }
-.footer-note { font-size: 10px; margin: 0; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .font-card:hover .specimen-surface::before, .font-card:focus-within .specimen-surface::before, body.is-previewing .specimen-surface::before { transform: translate(3%, -3%) scale(1.12); }
   .nav-contribute:hover { box-shadow: 0 5px 22px color-mix(in srgb, var(--accent) 16%, transparent); }
@@ -139,7 +137,6 @@ input[type="range"] { width: 100%; min-height: 24px; margin: 0; accent-color: va
   .font-list { column-gap: 24px; }
   .font-preview { padding: 25px; }
   .site-footer { flex-wrap: wrap; }
-  .footer-note { width: 100%; }
 }
 @media (max-width: 767px) {
   .wrap { width: calc(100% - 40px); }
@@ -148,7 +145,6 @@ input[type="range"] { width: 100%; min-height: 24px; margin: 0; accent-color: va
   .brand-mark { font-size: 39px; }
   .brand-caption { font-size: 20px; }
   .site-header nav { gap: 12px; }
-  .nav-editor { display: none; }
   .nav-contribute { font-size: 11px; padding: 9px 15px; gap: 12px; }
   .collection { padding-top: 23px; padding-bottom: 38px; }
   .collection-heading { margin-bottom: 25px; }
