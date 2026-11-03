@@ -46,3 +46,11 @@ Custom domain and DNS changes are a separate coordinated step. This repository d
 Pull-request CI checks out the reviewed base validator and website separately from submitted font data, with a read-only token and no stored Git credentials. It runs no submitted scripts or build hooks. There is no `pull_request_target` workflow, PR deployment, privileged secret, or auto-merge. Code/workflow changes require their own human review; never treat a green font-data check as approval of build-code changes. Maintainers should enable branch protection requiring review and the validation check before accepting community submissions.
 
 Original website code is [MIT licensed](LICENSE). Font licences remain separate and are never replaced by the website licence.
+
+The gallery's interaction and reduced-motion regressions also run without a browser dependency:
+
+```sh
+node --test tests/motion.test.mjs
+```
+
+See [DESIGN.md](DESIGN.md) for the requested design skill, element audit, motion decisions, and verification scope.

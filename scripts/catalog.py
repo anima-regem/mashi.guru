@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_FONT = 3 * 1024 * 1024
 MAX_FAMILY = 8 * 1024 * 1024
 MAX_COLLECTION = 64 * 1024 * 1024
-SAMPLE = "മഴ നനഞ്ഞ മണ്ണിന്റെ മണം."
+SAMPLE = "മലയാളം"
 
 
 class InvalidFont(ValueError):
@@ -193,9 +193,9 @@ def card(font):
     style_options = "".join(f'<option value="{e(a["file"])}" {"selected" if a["file"] == font["preview"] else ""}>{e(a["style"])}</option>' for a in font["files"])
     return f'''<article class="font-card" id="{slug}" data-font="{slug}" data-origin="{font['origin']}" data-category="{font['category']}" data-search="{e(' '.join([font['name'], font['nameMl'], font['author']['name'], font['category']]).casefold())}">
       <div class="card-heading"><div><h2>{e(font['name'])} <span lang="ml">{e(font['nameMl'])}</span></h2><p>By {e(font['author']['name'])}</p></div><span class="category">{e(font['category'].capitalize())}</span></div>
-      <p class="font-preview" lang="ml" data-preview style="font-family: 'font-{slug}', sans-serif">{SAMPLE}</p>
-      <div class="card-bottom"><span>{origin} <span aria-hidden="true">/</span> {styles}</span><a class="download" href="downloads/{slug}.zip" download>Download <span aria-hidden="true">↙</span><span class="sr-only"> {e(font['name'])}, font and licence ZIP</span></a></div>
-      <details><summary>About &amp; licence</summary><div class="font-info"><p>{e(font['description'])}</p>
+      <div class="specimen-surface"><p class="font-preview" lang="ml" role="region" aria-label="{e(font['name'])} font preview" tabindex="0" data-preview style="font-family: 'font-{slug}', sans-serif">{SAMPLE}</p></div>
+      <div class="card-bottom"><span>{origin} <span aria-hidden="true">/</span> {styles}</span><a class="download" href="downloads/{slug}.zip" download>Download ZIP <span aria-hidden="true">↓</span><span class="sr-only"> {e(font['name'])}, font and licence</span></a></div>
+      <details><summary>About &amp; licence <span class="details-mark" aria-hidden="true">+</span></summary><div class="font-info"><p>{e(font['description'])}</p>
       <dl><div><dt>Licence</dt><dd><a href="fonts/{slug}/{e(font['licenseFile'])}">{e(font['license'])}</a></dd></div><div><dt>Includes</dt><dd>Font files, complete licence &amp; attribution</dd></div></dl>
       <p><a href="{e(font['source'])}" rel="noopener noreferrer">Original project <span aria-hidden="true">↗</span></a> <a href="fonts/{slug}/{e(font['noticeFile'])}">Attribution &amp; provenance</a></p>
       <label class="style-label" hidden>Preview style <select data-style>{style_options}</select></label></div></details>
